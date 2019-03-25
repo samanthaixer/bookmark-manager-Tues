@@ -1,0 +1,57 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/gregpaul/Desktop/WORKSPACE/Projects/bookmark-manager/app.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/gregpaul/Desktop/WORKSPACE/Projects/bookmark-manager/lib/bookmark.rb": [
+        1,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/gregpaul/Desktop/WORKSPACE/Projects/bookmark-manager/spec/bookmark_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/gregpaul/Desktop/WORKSPACE/Projects/bookmark-manager/spec/features/display_spec.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1553529327
+  }
+}
