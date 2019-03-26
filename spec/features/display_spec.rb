@@ -9,6 +9,6 @@ require './app.rb'
 feature 'viewing bookmarks' do
   scenario 'user can visit bookmark page to view bookmarks' do
     visit('/bookmarks')
-    expect(page).to have_content(["www.bbc.co.uk", "www.tesco.co.uk", "www.guardian.co.uk"])
+    expect(page).to have_content("http://google.com")
   end
 end
