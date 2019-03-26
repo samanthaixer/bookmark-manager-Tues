@@ -8,7 +8,11 @@ class BookmarkManager < Sinatra::Base
 
   get '/bookmarks' do
     @bookmarks = Bookmark.all
-    erb :'bookmarks/index' 
+    erb :'bookmarks/index'
+  end
+
+  post '/bookmarks/new' do
+    erb :'bookmarks/new'
   end
 
   run! if app_file == $0
