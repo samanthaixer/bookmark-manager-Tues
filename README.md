@@ -25,3 +25,14 @@
 	- Firstly, connect to psql by typing <psql> in command line
 	- Once you have psql running, you onnect to the database by typing the pqsl command \c bookmark_manager;
 	- Do not forget the final semi-colon - it's not optional.
+	- The RSpec tests require a test database to be setup - please see below for instructions.
+
+## Production Database Setup Instructions
+
+	- `CREATE DATABASE BOOKMARK_MANAGER;`
+	- `CREATE TABLE bookmarks (id SERIAL PRIMARY KEY, url VARCHAR(60));`
+
+## Test Database Setup Instructions
+
+- `CREATE DATABASE BOOKMARK_MANAGER_TEST;`
+- `CREATE TABLE bookmarks (id SERIAL PRIMARY KEY, url VARCHAR(60));`
