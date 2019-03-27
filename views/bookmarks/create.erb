@@ -1,8 +1,10 @@
 <html>
-<%=@bookmarks%>
 
-
-
+<ul>
+<%@bookmarks.each do |bookmark| %>
+<li><%=bookmark.title%></li>
+<%end%>
+</ul>
 
 
 </html>

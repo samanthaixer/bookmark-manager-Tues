@@ -1,14 +1,17 @@
-<html>
 <center>
 
-<%=@bookmarks%>
+<ul>
+<%@bookmarks.each do |bookmark| %>
+<li><%=bookmark.title%></li>
+<%end%>
+</ul>
 
 <form action='/bookmarks/create' method="post">
-  <input type='text' name='new_bookmark'>
+  <input type='text' name='bookmark'>
+  <input type='text' name='title'>
   <input type='submit' value='add_bookmark'>
   </form>
 
 
 
 </center>
-</html>

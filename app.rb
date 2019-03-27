@@ -12,7 +12,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks/create' do
-    Bookmark.create(params[:new_bookmark])
+    Bookmark.create(params[:bookmark], params[:title])
     @bookmarks = Bookmark.all
     erb :'bookmarks/create'
   end

@@ -2,27 +2,22 @@ require 'bookmark'
 
 describe Bookmark do
   subject(:bookmark) { described_class.new }
-  # it "returns a list of all bookmarks" do
-  #   expect(Bookmark.all).to eq(["www.bbc.co.uk", "www.tesco.co.uk", "www.guardian.co.uk"])
-  # end
 
   it "selects all rows from the database" do
-    Bookmark.create("http://www.nandos.com")
-    Bookmark.create("http://www.mcdonalds.com")
-    Bookmark.create("http://www.justeat.com")
+    Bookmark.create("http://www.nandos.com", "Nandos")
+    Bookmark.create("http://www.mcdonalds.com", "McDs")
+    Bookmark.create("http://www.justeat.com", "Just Eat")
 
     bookmarks = Bookmark.all
 
-    expect(bookmarks).to include("http://www.nandos.com")
-    expect(bookmarks).to include("http://www.mcdonalds.com")
-    expect(bookmarks).to include("http://www.justeat.com")
+    expect(bookmarks[0]).to have_attributes(:title => "Nandos")
+    expect(bookmarks[1]).to have_attributes(:title => "McDs")
+    expect(bookmarks[2]).to have_attributes(:title => "Just Eat")
   end
 
   it "adds a new bookmark" do
-    Bookmark.create("http://www.bbc.co.uk")
+    Bookmark.create("http://www.bbc.co.uk", "BBC")
 
-    bookmarks = Bookmark.all
-
-    expect(bookmarks).to include("http://www.bbc.co.uk")
+    expect(Bookmark.all[0]).to have_attributes(:title => "BBC")
   end
 end
