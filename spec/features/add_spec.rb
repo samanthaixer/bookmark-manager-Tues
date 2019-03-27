@@ -12,8 +12,7 @@ end
 
 feature 'adding bookmarks' do
   scenario 'from the website, I can add a bookmark' do
-    connection = PG.connect :dbname => 'bookmark_manager_test'
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.bakeoff.com');")
+    Bookmark.create("http://www.bakeoff.com")
 
     visit('/bookmarks')
     fill_in('new_bookmark', :with => 'http://www.gov.uk')
