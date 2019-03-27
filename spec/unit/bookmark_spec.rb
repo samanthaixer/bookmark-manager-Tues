@@ -20,4 +20,13 @@ describe Bookmark do
 
     expect(Bookmark.all[0]).to have_attributes(:title => "BBC")
   end
+
+  it 'deletes a bookmark' do
+    Bookmark.create("http://www.askjeeves.com", "Ask Jeeves")
+    Bookmark.create("http://www.yahoo.com", "Yahoo")
+    expect(Bookmark.all.first).to have_attributes(:title => "Ask Jeeves", :id => 1)
+    Bookmark.delete(1)
+    expect(Bookmark.all.first).to have_attributes(:title => "Yahoo", :id => 2)
+  end
+
 end
