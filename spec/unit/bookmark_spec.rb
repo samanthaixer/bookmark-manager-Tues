@@ -22,10 +22,11 @@ describe Bookmark do
   end
 
   it 'deletes a bookmark' do
-    Bookmark.create("http://www.askjeeves.com", "Ask Jeeves")
+    bookmark = Bookmark.create("http://www.askjeeves.com", "Ask Jeeves")
     Bookmark.create("http://www.yahoo.com", "Yahoo")
     expect(Bookmark.all.first).to have_attributes(:title => "Ask Jeeves")
-    Bookmark.delete("Ask Jeeves")
+    p bookmark
+    Bookmark.delete(bookmark.id)
     expect(Bookmark.all.first).to have_attributes(:title => "Yahoo")
   end
 

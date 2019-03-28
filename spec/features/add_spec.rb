@@ -4,7 +4,7 @@ feature 'add new bookmarks' do
   scenario 'from the website, I can add a bookmark' do
     # connection = PG.connect :dbname => 'bookmark_manager_test'
     visit('/bookmarks')
-    fill_in('bookmark', :with => 'http://www.gov.uk')
+    fill_in('url', :with => 'http://www.gov.uk')
     fill_in('title', :with => 'Gov Site')
     click_button('add_bookmark')
     expect(page).to have_content("Gov Site")
@@ -16,7 +16,7 @@ feature 'add to existing bookmarks' do
     Bookmark.create("http://www.bakeoff.com", "Bake Off")
 
     visit('/bookmarks')
-    fill_in('bookmark', :with => 'http://www.gov.uk')
+    fill_in('url', :with => 'http://www.gov.uk')
     fill_in('title', :with => 'Gov Site')
     click_button('add_bookmark')
     expect(page).to have_content("Gov Site")

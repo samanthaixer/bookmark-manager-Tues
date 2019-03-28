@@ -5,6 +5,7 @@ class BookmarkManager < Sinatra::Base
   # get '/' do
   #   'Welcome to Bookmark Manager'
   # end
+  enable :method_override
 
   get '/bookmarks' do
     @bookmarks = Bookmark.all
@@ -12,13 +13,13 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks/create' do
-    Bookmark.create(params[:bookmark], params[:title])
+    Bookmark.create(params[:url], params[:title])
     @bookmarks = Bookmark.all
     redirect '/bookmarks'
   end
 
-  post '/bookmarks/delete' do
-    Bookmark.delete(params[:delete_title])
+  delete '/bookmarks/:id' do
+    Bookmark.delete(params[:id])
     redirect '/bookmarks'
   end
 

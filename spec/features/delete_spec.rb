@@ -4,10 +4,11 @@ feature 'Deleting bookmarks' do
     Bookmark.create("http://www.gov.uk", "Gov Site")
 
     visit '/bookmarks'
+    expect(page).to have_link('Google', href: 'http://www.google.com')
+    expect(page).to have_link('Gov Site', href: 'http://www.gov.uk')
 
-    fill_in('delete_title', :with => "Gov Site")
-    click_button "delete"
+    first('.bookmark').click_button 'Delete'
 
-    expect(page).to have_no_link(href: "http://www.gov.uk")
+    expect(page).to have_no_link('Google', href: 'http://www.google.com')
   end
 end
