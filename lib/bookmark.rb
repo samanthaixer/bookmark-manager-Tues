@@ -31,14 +31,14 @@ class Bookmark
     results.result_status
   end
 
-  def self.delete(id)
+  def self.delete(title)
     if ENV['RACK_ENV'] == 'test'
       connection = PG.connect :dbname => 'bookmark_manager_test'
     else
       connection = PG.connect :dbname => 'bookmark_manager'
     end
 
-    results = connection.exec "DELETE FROM bookmarks WHERE id = #{id};"
+    results = connection.exec "DELETE FROM bookmarks WHERE title = '#{title}';"
     results.map { |bookmark| Bookmark.new(bookmark['id'], bookmark['url'], bookmark['title']) }
   end
 end

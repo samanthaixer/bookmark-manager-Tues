@@ -5,7 +5,7 @@ feature 'Deleting bookmarks' do
 
     visit '/bookmarks'
 
-    fill_in('delete_ID', :with => "2")
+    fill_in('delete_title', :with => "Gov Site")
     click_button "delete"
 
     expect(page).to have_no_link(href: "http://www.gov.uk")
