@@ -41,4 +41,26 @@ class Bookmark
     results = connection.exec "DELETE FROM bookmarks WHERE id = '#{id}';"
     results.map { |bookmark| Bookmark.new(bookmark['id'], bookmark['url'], bookmark['title']) }
   end
+
+  def self.one(id)
+    if ENV['RACK_ENV'] == 'test'
+      connection = PG.connect :dbname => 'bookmark_manager_test'
+    else
+      connection = PG.connect :dbname => 'bookmark_manager'
+    end
+
+    results = connection.exec "SELECT * FROM bookmarks WHERE id = #{id};"
+    Bookmark.new(results[0]['id'], results[0]['url'], results[0]['title'])
+  end
+
+  def self.update(bookmark)
+    if ENV['RACK_ENV'] == 'test'
+      connection = PG.connect :dbname => 'bookmark_manager_test'
+    else
+      connection = PG.connect :dbname => 'bookmark_manager'
+    end
+
+    results = connection.exec "UPDATE BOOKMARKS SET url = '#{bookmark.url}', title = '#{bookmark.title}' WHERE id = #{bookmark.id} RETURNING id, url, title;"
+    Bookmark.new(results[0]['id'], results[0]['url'], results[0]['title'])
+  end
 end

@@ -1,0 +1,20 @@
+<center>
+
+<h1>Enter your updates here</h1>
+<form action='/bookmarks/update' method="post">
+  Current title:
+    <span "details">
+      <%= @bookmark.title %>
+    </span>
+  Enter new title:
+    <input type='text' name='title' value="<%= @bookmark.title %>"/><br/>
+  Current URL:
+    <span "details">
+      <%= @bookmark.url %>
+    </span>
+  Enter new URL:
+  <input type='text' name='url'><%= @bookmark.url %></input><br/>
+  <input type="hidden" name="id" value="<%= @bookmark.id %>">
+  <input type='submit' value='Update Bookmark'/>
+  </form>
+</center>

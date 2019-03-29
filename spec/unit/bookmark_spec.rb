@@ -25,9 +25,19 @@ describe Bookmark do
     bookmark = Bookmark.create("http://www.askjeeves.com", "Ask Jeeves")
     Bookmark.create("http://www.yahoo.com", "Yahoo")
     expect(Bookmark.all.first).to have_attributes(:title => "Ask Jeeves")
-    p bookmark
     Bookmark.delete(bookmark.id)
     expect(Bookmark.all.first).to have_attributes(:title => "Yahoo")
+  end
+
+  it 'returns just one bookmark based on an ID' do
+    bookmark = Bookmark.create("http://www.askjeeves.com", "Ask Jeeves")
+    expect(Bookmark.one(bookmark.id)).to have_attributes(:title => "Ask Jeeves")
+  end
+
+  it 'updates a bookmark' do
+    bookmark = Bookmark.create("http://www.goggle.com", "Goggle")
+    bookmark_2 = Bookmark.new(bookmark.id, "http://www.google.com", "Google")
+    expect(Bookmark.update(bookmark_2)).to have_attributes(:title => "Google", :url => "http://www.google.com")
   end
 
 end
